@@ -20,7 +20,7 @@
   #boot.kernelPackages = pkgs.linuxPackages_lts;
 
   # Enable SSH
-  services.openssh.enable = false;
+  services.openssh.enable = true;
 
   # Installed StateVersion
   system.stateVersion = "25.11";
