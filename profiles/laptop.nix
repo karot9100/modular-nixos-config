@@ -12,14 +12,14 @@
     ../modules/apps/cli/yt-dlp.nix
 
     # Apps - dev
-    ../modules/apps/dev/docker.nix
-    ../modules/apps/dev/java.nix
+    #../modules/apps/dev/docker.nix
+    #../modules/apps/dev/java.nix
     ../modules/apps/dev/virt-manager.nix
 
     # Apps - editors
-    ../modules/apps/editors/gimp.nix
+    #../modules/apps/editors/gimp.nix
     ../modules/apps/editors/vim.nix
-    ../modules/apps/editors/vscode.nix
+    #../modules/apps/editors/vscode.nix
 
     # Apps - file-browsers
     ../modules/apps/file-browsers/files.nix
@@ -37,7 +37,7 @@
     ../modules/apps/media/video.nix
 
     # Apps - office
-    ../modules/apps/office/libreoffice.nix
+    #../modules/apps/office/libreoffice.nix
 
     # Apps - terminals
     ../modules/apps/terminals/alacritty.nix
