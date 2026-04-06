@@ -15,4 +15,8 @@
     };
   };
 
+  system.activationScripts.firefoxProfile = ''
+    mkdir -p /home/simon/.mozilla/firefox
+  '';
+
 }
