@@ -60,10 +60,12 @@
     # System
     ../modules/system/base.nix
     ../modules/system/bash.nix
+    ../modules/system/dotfiles.nix
     ../modules/system/keyring.nix
     ../modules/system/networking.nix
     ../modules/system/theme.nix
     ../modules/system/users.nix
+
 
 
   ];
