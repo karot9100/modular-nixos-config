@@ -26,6 +26,10 @@
     papirus-icon-theme
 
   ];
+  
+  # All nerd fonts
+  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
 
   environment.variables = {
     TERMINAL              = "alacritty";
