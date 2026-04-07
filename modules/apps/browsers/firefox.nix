@@ -17,6 +17,7 @@
 
   system.activationScripts.firefoxProfile = ''
     mkdir -p /home/simon/.mozilla/firefox
+    chown -R simon:users /home/simon/.mozilla
   '';
 
 }
