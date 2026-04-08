@@ -128,8 +128,11 @@
     "return-type": "json",
     "on-click": "~/.config/waybar/scripts/power-cycle.sh",
     "format": "{text}"
-  }
+  },
 
+  "tray": {
+    "ignored-items": ["blueman"]
+  }
 
 
 }

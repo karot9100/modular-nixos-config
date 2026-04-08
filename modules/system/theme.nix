@@ -25,6 +25,9 @@
     #whitesur-icon-theme
     papirus-icon-theme
 
+    # dependencies to apply themes to some stuff
+    glib
+    gsettings-desktop-schemas
   ];
   
   # All nerd fonts
@@ -54,4 +57,56 @@
     style = "adwaita-dark";
   };
 
+  programs.dconf.enable = true;
+
+    # Write GTK settings files declaratively
+    system.activationScripts.gtkTheme = ''
+      mkdir -p /home/simon/.config/gtk-3.0
+      mkdir -p /home/simon/.config/gtk-4.0
+
+      cat > /home/simon/.config/gtk-3.0/settings.ini << EOF
+[Settings]
+gtk-theme-name=Tokyonight-Dark
+gtk-icon-theme-name=Papirus-Dark
+gtk-cursor-theme-name=Bibata-Modern-Ice
+gtk-cursor-theme-size=24
+gtk-application-prefer-dark-theme=1
+EOF
+
+      cat > /home/simon/.config/gtk-4.0/settings.ini << EOF
+[Settings]
+gtk-theme-name=Tokyonight-Dark
+gtk-icon-theme-name=Papirus-Dark
+gtk-cursor-theme-name=Bibata-Modern-Ice
+gtk-cursor-theme-size=24
+gtk-application-prefer-dark-theme=1
+EOF
+
+      chown -R simon:users /home/simon/.config/gtk-3.0
+      chown -R simon:users /home/simon/.config/gtk-4.0
+    '';
+
+  systemd.user.services.apply-gtk-theme = {
+    description = "Apply GTK/dconf theme settings";
+    wantedBy = [ "default.target" ];
+    after = [ "dconf.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = let
+        script = pkgs.writeShellScript "apply-gtk-theme" ''
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark'
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-size 24
+        '';
+      in "${script}";
+    };
+    environment = {
+      DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/1000/bus";
+      GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
+    };
+  };  
+  
 }

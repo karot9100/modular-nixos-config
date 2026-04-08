@@ -8,7 +8,7 @@
   ];
 
   systemd.user.tmpfiles.rules = [
-    "d /home/youruser/Screenshots 0755 youruser users -"
+    "d /home/simon/Screenshots 0755 youruser users -"
   ];
 
 }
