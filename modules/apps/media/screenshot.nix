@@ -7,4 +7,8 @@
     slurp
   ];
 
+  systemd.user.tmpfiles.rules = [
+    "d /home/youruser/Screenshots 0755 youruser users -"
+  ];
+
 }
