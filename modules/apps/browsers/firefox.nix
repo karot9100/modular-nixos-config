@@ -15,9 +15,9 @@
     };
   };
 
-  system.activationScripts.firefoxProfile = ''
-    mkdir -p /home/simon/.mozilla/firefox
-    chown -R simon:users /home/simon/.mozilla
-  '';
+  # Creating the folder and set permissions if not already existing
+  systemd.tmpfiles.rules = [
+    "d /home/simon/.mozilla/firefox 0755 simon users - -"
+  ];
 
 }
