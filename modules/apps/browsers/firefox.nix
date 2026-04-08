@@ -17,7 +17,8 @@
 
   # Creating the folder and set permissions if not already existing
   systemd.tmpfiles.rules = [
-    "d /home/simon/.mozilla/firefox 0755 simon users - -"
+    "v /home/simon/.mozilla 0755 simon users - -"
+    "v /home/simon/.mozilla/firefox 0755 simon users - -"
   ];
 
 }
