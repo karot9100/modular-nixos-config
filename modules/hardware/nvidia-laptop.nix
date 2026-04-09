@@ -11,53 +11,59 @@ in
 
 {
 
-  services.xserver.videoDrivers = [
-    "intel"
-    "nvidia"
-  ];
+  options.mymodules.nvidia.enable = lib.mkEnableOption "nvidia";
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      vulkan-loader
-      vulkan-tools
-      vulkan-validation-layers
+  config = lib.mkIf config.mymodules.nvidia.enable {
+
+    services.xserver.videoDrivers = [
+      "intel"
+      "nvidia"
     ];
-  };
 
-  hardware.nvidia = {
-    open = true;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    dynamicBoost.enable = true;
-    nvidiaSettings = true;
-    prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        vulkan-loader
+        vulkan-tools
+        vulkan-validation-layers
+      ];
     };
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+
+    hardware.nvidia = {
+      open = true;
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      powerManagement.finegrained = true;
+      dynamicBoost.enable = true;
+      nvidiaSettings = true;
+      prime = {
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+      };
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+    };
+
+    # Blocklist Nouveau
+    boot.blacklistedKernelModules = [ "nouveau" ];
+
+    boot.kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia.NVreg_EnableGpuFirmware=0"
+      "pcie_aspm=force"
+    ];
+
+    # Patch desktop entries to use nvidia-offload
+    environment.systemPackages = with pkgs; [
+      (GPUOffloadApp steam "steam")
+      (GPUOffloadApp (bolt-launcher.override { enableRS3 = true; }) "Bolt")
+    ];
+
   };
-
-  # Blocklist Nouveau
-  boot.blacklistedKernelModules = [ "nouveau" ];
-
-  boot.kernelParams = [
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    "nvidia.NVreg_EnableGpuFirmware=0"
-    "pcie_aspm=force"
-  ];
-
-  # Patch desktop entries to use nvidia-offload
-  environment.systemPackages = with pkgs; [
-    (GPUOffloadApp steam "steam")
-    (GPUOffloadApp (bolt-launcher.override { enableRS3 = true; }) "Bolt")
-  ];
 
 }
 

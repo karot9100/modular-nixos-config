@@ -1,13 +1,18 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
-  environment.systemPackages = with pkgs; [
-    wine
-    wineWowPackages.stable
-    winetricks
-#    bottles
-  ];
+  options.mymodules.wine.enable = lib.mkEnableOption "wine";
+
+  config = lib.mkIf config.mymodules.wine.enable {
+
+    environment.systemPackages = with pkgs; [
+      wine
+      wineWowPackages.stable
+      winetricks
+    ];
+
+  };
 
 }
 

@@ -1,7 +1,10 @@
-{ ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
+  options.mymodules.dotfiles.enable = lib.mkEnableOption "dotfiles";
+
+config = lib.mkIf config.mymodules.dotfiles.enable {
 system.activationScripts.dotfiles = ''
   mkdir -p /home/simon/.config
 
@@ -15,5 +18,7 @@ system.activationScripts.dotfiles = ''
   ln -sf /etc/nixos/dotfiles/fuzzel /home/simon/.config/fuzzel
   ln -sf /etc/nixos/dotfiles/swayosd /home/simon/.config/swayosd
 '';
+
+  };
 
 }

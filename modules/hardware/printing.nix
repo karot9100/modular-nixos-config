@@ -2,32 +2,38 @@
 
 {
 
-    # Printing
-  services.printing.enable = true;
+  options.mymodules.printing.enable = lib.mkEnableOption "printing";
 
-  # Avahi — mDNS / .local resolution & printer discovery
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
+  config = lib.mkIf config.mymodules.printing.enable {
 
-  # Printing drivers/services
-  services.printing.drivers = with pkgs; [
-    gutenprint
-    gutenprintBin      # binary blobs for some Epson/Canon
-    #hplip              # HP printers
-    #brlaser            # Brother laser printers
-    epson-escpr        # Epson inkjet
-    cups-filters
-  ];
+      # Printing
+    services.printing.enable = true;
 
-  # Driverless scanning
-  hardware.sane = {
-    enable = true;
-    extraBackends = [
-      pkgs.sane-airscan
+    # Avahi — mDNS / .local resolution & printer discovery
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    # Printing drivers/services
+    services.printing.drivers = with pkgs; [
+      gutenprint
+      gutenprintBin      # binary blobs for some Epson/Canon
+      #hplip              # HP printers
+      #brlaser            # Brother laser printers
+      epson-escpr        # Epson inkjet
+      cups-filters
     ];
+
+    # Driverless scanning
+    hardware.sane = {
+      enable = true;
+      extraBackends = [
+        pkgs.sane-airscan
+      ];
+    };
+
   };
     
 }

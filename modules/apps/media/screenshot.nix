@@ -2,13 +2,19 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    grim
-    slurp
-  ];
+  options.mymodules.screenshot.enable = lib.mkEnableOption "screenshot";
 
-  systemd.user.tmpfiles.rules = [
-    "d /home/simon/Screenshots 0755 youruser users -"
-  ];
+  config = lib.mkIf config.mymodules.screenshot.enable {
+
+    environment.systemPackages = with pkgs; [
+      grim
+      slurp
+    ];
+
+    systemd.user.tmpfiles.rules = [
+      "d /home/simon/Screenshots 0755 simon users -"
+    ];
+
+  };
 
 }

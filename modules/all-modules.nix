@@ -24,44 +24,44 @@
     ./apps/file-browsers/files.nix
 
     # Apps - gaming
-#    ./apps/gaming/gamemode.nix
-#    ./apps/gaming/permittedpackages.nix
-#    ./apps/gaming/steam.nix
-#    ./apps/gaming/wine.nix
+    ./apps/gaming/gamemode.nix
+    ./apps/gaming/permittedpackages.nix
+    ./apps/gaming/steam.nix
+    ./apps/gaming/wine.nix
 
     # Apps - media
-#    ./apps/media/media.nix
-#    ./apps/media/music.nix
-#    ./apps/media/screenshot.nix
-#    ./apps/media/video.nix
+    ./apps/media/media.nix
+    ./apps/media/music.nix
+    ./apps/media/screenshot.nix
+    ./apps/media/video.nix
 
     # Apps - office
-#    ./apps/office/libreoffice.nix
+    ./apps/office/libreoffice.nix
 
     # Apps - terminals
-#    ./apps/terminals/alacritty.nix
-#    ./apps/terminals/kitty.nix
+    ./apps/terminals/alacritty.nix
+    ./apps/terminals/kitty.nix
 
     # Desktop
-#    ./desktop/hyprland.nix
+    ./desktop/hyprland.nix
 
     # Hardware
-#    ./hardware/input.nix
-#    ./hardware/nvidia-laptop.nix
-#    ./hardware/power-management.nix
-#    ./hardware/printing.nix
-#    ./hardware/sensors.nix
-#    ./hardware/sound.nix
-#    ./hardware/storage.nix
+    ./hardware/input.nix
+    ./hardware/nvidia-laptop.nix
+    ./hardware/power-management.nix
+    ./hardware/printing.nix
+    ./hardware/sensors.nix
+    ./hardware/sound.nix
+    ./hardware/storage.nix
 
     # System
-#    ./system/base.nix
-#    ./system/bash.nix
-#    ./system/dotfiles.nix
-#    ./system/keyring.nix
-#    ./system/networking.nix
-#    ./system/theme.nix
-#    ./system/users.nix
+    ./system/base.nix
+    ./system/bash.nix
+    ./system/dotfiles.nix
+    ./system/keyring.nix
+    ./system/networking.nix
+    ./system/theme.nix
+    ./system/users.nix
 
   ];
 

@@ -2,12 +2,17 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-    libinput
-    piper
-  ];
+  options.mymodules.input.enable = lib.mkEnableOption "input";
 
-  services.ratbagd.enable = true;
+  config = lib.mkIf config.mymodules.input.enable {
+    environment.systemPackages = with pkgs; [
+      brightnessctl
+      libinput
+      piper
+    ];
+
+    services.ratbagd.enable = true;
+
+  };
 
 }
