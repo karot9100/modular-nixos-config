@@ -4,8 +4,9 @@
 
   options.mymodules.dotfiles.enable = lib.mkEnableOption "dotfiles";
 
-config = lib.mkIf config.mymodules.dotfiles.enable {
-system.activationScripts.dotfiles = ''
+  config = lib.mkIf config.mymodules.dotfiles.enable {
+
+    system.activationScripts.dotfiles = ''
   mkdir -p /home/simon/.config
 
   rm -rf /home/simon/.config/waybar

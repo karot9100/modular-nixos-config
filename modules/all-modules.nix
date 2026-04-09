@@ -38,6 +38,12 @@
     # Apps - office
     ./apps/office/libreoffice.nix
 
+    # Apps - services
+    ./apps/services/bazarr.nix
+    ./apps/services/prowlarr.nix
+    ./apps/services/radarr.nix
+    ./apps/services/sonarr.nix
+
     # Apps - terminals
     ./apps/terminals/alacritty.nix
     ./apps/terminals/kitty.nix
