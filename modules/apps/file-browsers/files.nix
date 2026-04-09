@@ -2,25 +2,31 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    gvfs
-    cifs-utils
-    nautilus
-    nautilus-open-any-terminal
-    xfce.exo
-    loupe
-  ];
+  options.mymodules.files.enable = lib.mkEnableOption "files";
 
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-media-tags-plugin
-      thunar-volman
+  config = lib.mkIf config.mymodules.files.enable {
+
+    environment.systemPackages = with pkgs; [
+      gvfs
+      cifs-utils
+      nautilus
+      nautilus-open-any-terminal
+      xfce.exo
+      loupe
     ];
-  };
 
-  services.gvfs.enable = true;
-  services.dbus.enable = true;
+    programs.thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-media-tags-plugin
+        thunar-volman
+      ];
+    };
+
+    services.gvfs.enable = true;
+    services.dbus.enable = true;
+
+  };
 
 }
 

@@ -2,7 +2,12 @@
 
 {
 
-  virtualisation.docker.enable = true;
+  options.mymodules.docker.enable = lib.mkEnableOption "docker";
 
+  config = lib.mkIf config.mymodules.docker.enable {
+
+    virtualisation.docker.enable = true;
+
+  };
 }
 

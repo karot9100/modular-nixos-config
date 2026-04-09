@@ -4,25 +4,15 @@
 
   imports = [
 
-    # Apps - browsers
-    ../modules/apps/browsers/chromium.nix
-    ../modules/apps/browsers/firefox.nix
+    # All Modules
+    ../modules/all-modules.nix
+
 
     # Apps - cli
     ../modules/apps/cli/yt-dlp.nix
 
-    # Apps - dev
-    #../modules/apps/dev/docker.nix
-    #../modules/apps/dev/java.nix
-    ../modules/apps/dev/virt-manager.nix
 
-    # Apps - editors
-    #../modules/apps/editors/gimp.nix
-    ../modules/apps/editors/vim.nix
-    #../modules/apps/editors/vscode.nix
 
-    # Apps - file-browsers
-    ../modules/apps/file-browsers/files.nix
 
     # Apps - gaming
     ../modules/apps/gaming/gamemode.nix
@@ -66,8 +56,26 @@
     ../modules/system/theme.nix
     ../modules/system/users.nix
 
-
-
   ];
+
+  # Browsers
+  mymodules.chromium.enable = true;
+  mymodules.firefox.enable = true;
+
+  # Cli tools
+  mymodules.yt-dlp.enable = true;
+
+  # Dev
+  mymodules.virt-manager.enable = true;
+  mymodules.docker.enable = false;
+  mymodules.java.enable = false;
+
+  # Editors
+  mymodules.gimp.enable = false;
+  mymodules.vim.enable = true;
+  mymodules.vscode.enable = false;
+
+  # File Browsers
+  mymodules.files.enable = true;
 
 }
