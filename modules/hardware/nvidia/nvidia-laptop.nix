@@ -11,7 +11,10 @@ in
 
 {
 
-  options.mymodules.nvidia.enable = lib.mkEnableOption "nvidia";
+  options.mymodules.nvidia = {
+    enable = lib.mkEnableOption "nvidia";
+    batterySaver = lib.mkEnableOption "battery saver specialisation";
+  };
 
   config = lib.mkIf config.mymodules.nvidia.enable {
 
@@ -62,6 +65,13 @@ in
       (GPUOffloadApp steam "steam")
       (GPUOffloadApp (bolt-launcher.override { enableRS3 = true; }) "Bolt")
     ];
+
+    specialisation = lib.mkIf config.mymodules.nvidia.batterySaver {
+      battery-saver.configuration = {
+        system.nixos.tags = [ "battery-saver" ];
+        imports = [ ./nvidia-disable.nix ];
+      };
+    };
 
   };
 

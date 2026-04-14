@@ -50,6 +50,7 @@
   # Hardware
   mymodules.input.enable            = true;
   mymodules.nvidia.enable           = true;
+  mymodules.nvidia.batterySaver     = true;
   mymodules.power-management.enable = true;
   mymodules.printing.enable         = true;
   mymodules.sensors.enable          = true;

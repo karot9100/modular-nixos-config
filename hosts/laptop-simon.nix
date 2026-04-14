@@ -26,8 +26,11 @@
   system.stateVersion = "25.11";
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 1;
+    efi.canTouchEfiVariables = true;
+  };
 
   # Mounted SSD
   fileSystems."/mnt/1tb-ssd" = {

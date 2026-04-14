@@ -53,7 +53,8 @@
 
     # Hardware
     ./hardware/input.nix
-    ./hardware/nvidia-laptop.nix
+    ./hardware/nvidia/nvidia-laptop.nix
+    ./hardware/nvidia/nvidia-disable.nix
     ./hardware/power-management.nix
     ./hardware/printing.nix
     ./hardware/sensors.nix
