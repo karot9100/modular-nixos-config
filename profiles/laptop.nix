@@ -14,9 +14,10 @@
   mymodules.yt-dlp.enable           = true;
 
   # Dev
-  mymodules.virt-manager.enable     = true;
+  mymodules.virt-manager.enable     = false;
   mymodules.docker.enable           = false;
   mymodules.java.enable             = false;
+  mymodules.claude.enable           = true;
 
   # Editors
   mymodules.gimp.enable             = false;
@@ -52,6 +53,7 @@
   mymodules.nvidia.enable           = true;
   mymodules.nvidia.batterySaver     = true;
   mymodules.power-management.enable = true;
+  mymodules.lenovo-legion.enable    = true;
   mymodules.printing.enable         = true;
   mymodules.sensors.enable          = true;
   mymodules.sound.enable            = true;

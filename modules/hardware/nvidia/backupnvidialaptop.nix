@@ -8,7 +8,7 @@ with pkgs; let
     '');
   GPUOffloadApp = pkg: desktopName: patchDesktop pkg desktopName "^Exec=" "Exec=nvidia-offload ";
 in
-  
+
 {
 
   options.mymodules.nvidia = {
@@ -17,7 +17,11 @@ in
   };
 
   config = lib.mkIf config.mymodules.nvidia.enable {
-    services.xserver.videoDrivers = [ "intel" "nvidia" ];
+
+    services.xserver.videoDrivers = [
+      "intel"
+      "nvidia"
+    ];
 
     hardware.graphics = {
       enable = true;
@@ -47,13 +51,16 @@ in
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
 
+    # Blocklist Nouveau
     boot.blacklistedKernelModules = [ "nouveau" ];
+
     boot.kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia.NVreg_EnableGpuFirmware=0"
       "pcie_aspm=force"
     ];
 
+    # Patch desktop entries to use nvidia-offload
     environment.systemPackages = with pkgs; [
       (GPUOffloadApp steam "steam")
       (GPUOffloadApp (bolt-launcher.override { enableRS3 = true; }) "Bolt")
@@ -69,3 +76,4 @@ in
   };
 
 }
+

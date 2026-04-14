@@ -14,6 +14,7 @@
     ./apps/dev/docker.nix
     ./apps/dev/java.nix
     ./apps/dev/virt-manager.nix
+    ./apps/dev/claude.nix
 
     # Apps - editors
     ./apps/editors/gimp.nix
@@ -54,8 +55,8 @@
     # Hardware
     ./hardware/input.nix
     ./hardware/nvidia/nvidia-laptop.nix
-    ./hardware/nvidia/nvidia-disable.nix
     ./hardware/power-management.nix
+    ./hardware/lenovo-legion.nix
     ./hardware/printing.nix
     ./hardware/sensors.nix
     ./hardware/sound.nix
