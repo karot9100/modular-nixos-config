@@ -25,7 +25,7 @@
 
     # Also trigger on AC unplug via udev
     services.udev.extraRules = ''
-      SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{POWER_SUPPLY_NAME}=="ACAD", RUN+="${pkgs.systemd}/bin/systemctl start rapl-battery.service"
+      SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{POWER_SUPPLY_NAME}=="ACAD", RUN+="${pkgs.systemd}/bin/systemctl restart rapl-battery.service"
     '';
 
     boot.kernel.sysctl = {
