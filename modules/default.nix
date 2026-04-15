@@ -22,7 +22,8 @@
     ./apps/editors/vscode
 
     # Apps - file-browsers
-    ./apps/file-browsers/files.nix
+    ./apps/file-browsers/nautilus
+    ./apps/file-browsers/thunar
 
     # Apps - gaming
     ./apps/gaming/gamemode
@@ -31,13 +32,13 @@
     ./apps/gaming/wine
 
     # Apps - media
-    ./apps/media/media.nix
-    ./apps/media/music.nix
-    ./apps/media/screenshot.nix
-    ./apps/media/video.nix
+    ./apps/media/media
+    ./apps/media/music
+    ./apps/media/screenshot
+    ./apps/media/video
 
     # Apps - office
-    ./apps/office/libreoffice.nix
+    ./apps/office/libreoffice
 
     # Apps - services
     ./apps/services/bazarr.nix
@@ -46,11 +47,11 @@
     ./apps/services/sonarr.nix
 
     # Apps - terminals
-    ./apps/terminals/alacritty.nix
-    ./apps/terminals/kitty.nix
+    ./apps/terminals/alacritty
+    ./apps/terminals/kitty
 
     # Desktop
-    ./desktop/hyprland.nix
+    ./desktop/hyprland
 
     # Hardware
     ./hardware/input.nix

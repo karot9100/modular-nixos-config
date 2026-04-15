@@ -3,7 +3,7 @@
 {
 
   imports = [
-    ../modules/all-modules.nix
+    ../modules
   ];
 
   # Browsers
@@ -25,7 +25,8 @@
   mymodules.vscode.enable           = false;
 
   # File Browsers
-  mymodules.files.enable            = true;
+  mymodules.thunar.enable           = true;
+  mymodules.nautilus.enable         = true;
 
   # Gaming
   mymodules.gamemode.enable         = true;
