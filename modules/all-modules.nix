@@ -4,31 +4,31 @@
 
   imports = [
     # Apps - browsers
-    ./apps/browsers/chromium.nix
-    ./apps/browsers/firefox.nix
+    ./apps/browsers/chromium
+    ./apps/browsers/firefox
 
     # Apps - cli
-    ./apps/cli/yt-dlp.nix
+    ./apps/cli/yt-dlp
 
     # Apps - dev
-    ./apps/dev/docker.nix
-    ./apps/dev/java.nix
-    ./apps/dev/virt-manager.nix
-    ./apps/dev/claude.nix
+    ./apps/dev/docker
+    ./apps/dev/java
+    ./apps/dev/virt-manager
+    ./apps/dev/claude
 
     # Apps - editors
-    ./apps/editors/gimp.nix
-    ./apps/editors/vim.nix
-    ./apps/editors/vscode.nix
+    ./apps/editors/gimp
+    ./apps/editors/vim
+    ./apps/editors/vscode
 
     # Apps - file-browsers
     ./apps/file-browsers/files.nix
 
     # Apps - gaming
-    ./apps/gaming/gamemode.nix
-    ./apps/gaming/permittedpackages.nix
-    ./apps/gaming/steam.nix
-    ./apps/gaming/wine.nix
+    ./apps/gaming/gamemode
+    ./apps/gaming/permittedpackages
+    ./apps/gaming/steam
+    ./apps/gaming/wine
 
     # Apps - media
     ./apps/media/media.nix
