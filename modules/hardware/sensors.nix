@@ -10,6 +10,7 @@
       lm_sensors
       powertop
       mesa-demos
+      python3Packages.matplotlib
     ];
 
   };
