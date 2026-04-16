@@ -41,10 +41,10 @@
     ./apps/office/libreoffice
 
     # Apps - services
-    ./apps/services/bazarr.nix
-    ./apps/services/prowlarr.nix
-    ./apps/services/radarr.nix
-    ./apps/services/sonarr.nix
+    ./apps/services/bazarr
+    ./apps/services/prowlarr
+    ./apps/services/radarr
+    ./apps/services/sonarr
 
     # Apps - terminals
     ./apps/terminals/alacritty
@@ -54,23 +54,23 @@
     ./desktop/hyprland
 
     # Hardware
-    ./hardware/input.nix
-    ./hardware/nvidia/nvidia-laptop.nix
-    ./hardware/power-management.nix
-    ./hardware/lenovo-legion.nix
-    ./hardware/printing.nix
-    ./hardware/sensors.nix
-    ./hardware/sound.nix
-    ./hardware/storage.nix
+    ./hardware/input
+    ./hardware/nvidia/nvidia-laptop
+    ./hardware/power-management
+    ./hardware/lenovo-legion
+    ./hardware/printing
+    ./hardware/sensors
+    ./hardware/sound
+    ./hardware/storage
 
     # System
-    ./system/base.nix
-    ./system/bash.nix
-    ./system/dotfiles.nix
-    ./system/keyring.nix
-    ./system/networking.nix
-    ./system/theme.nix
-    ./system/users.nix
+    ./system/base
+    ./system/bash
+    ./system/dotfiles
+    ./system/keyring
+    ./system/networking
+    ./system/theme
+    ./system/users
 
   ];
 

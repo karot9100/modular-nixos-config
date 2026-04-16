@@ -62,7 +62,7 @@ in
     specialisation = lib.mkIf config.mymodules.nvidia.batterySaver {
       battery-saver.configuration = {
         system.nixos.tags = [ "battery-saver" ];
-        imports = [ ./nvidia-disable.nix ];
+        imports = [ .././nvidia-disable ];
       };
     };
 
