@@ -10,6 +10,9 @@
     # Apps - cli
     ./apps/cli/yt-dlp
 
+    # Apps - Desktop-tools
+    ./apps/desktop-tools/appimage
+
     # Apps - dev
     ./apps/dev/docker
     ./apps/dev/java

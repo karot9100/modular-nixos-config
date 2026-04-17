@@ -17,7 +17,6 @@
       p7zip 
       wget
       killall 
-      desktop-file-utils
     ];
 
     # Enable Appimage support
