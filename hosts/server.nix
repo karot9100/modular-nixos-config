@@ -29,7 +29,6 @@
   # Bootloader — adjust if not EFI (e.g. use grub like vm.nix)
   boot.loader = {
     systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 3;
     efi.canTouchEfiVariables = true;
   };
 

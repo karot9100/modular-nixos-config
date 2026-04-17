@@ -3,7 +3,7 @@
 {
 
   imports = [
-    ../modules/all-modules.nix
+    ../modules
   ];
 
   # Dev
