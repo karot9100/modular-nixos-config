@@ -5,8 +5,21 @@
     ../profiles/server.nix
   ];
 
-  # Hostname
-  networking.hostName = "nixos-server";
+  networking = {
+    hostName = "nixos-server";
+    useDHCP = false;
+
+    interfaces.enp2s0 = {
+      useDHCP = false;
+      ipv4.addresses = [{
+        address = "192.168.0.44";
+        prefixLength = 24;
+      }];
+    };
+
+    defaultGateway = "192.168.0.1";
+    nameservers = [ "195.130.130.130" "195.130.130.4" ];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
