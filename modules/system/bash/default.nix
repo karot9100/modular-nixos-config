@@ -26,6 +26,8 @@
         HISTSIZE=10000
         HISTFILESIZE=20000
         HISTCONTROL=ignoredups:erasedups
+
+        cd /etc/nixos
       '';
 
       shellAliases = {
