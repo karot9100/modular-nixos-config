@@ -44,6 +44,8 @@
 
     # Office
     mymodules.libreoffice.enable      = false;
+    mymodules.thunderbird.enable      = true;
+    
 
     # Terminals
     mymodules.alacritty.enable        = true;

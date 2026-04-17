@@ -42,6 +42,7 @@
 
     # Apps - office
     ./apps/office/libreoffice
+    ./apps/office/thunderbird
 
     # Apps - services
     ./apps/services/bazarr

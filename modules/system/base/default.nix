@@ -22,6 +22,9 @@
     # Enable Appimage support
     programs.appimage.enable = true;
 
+    # Experimental Features
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
     # Enable terminal info
     environment.enableAllTerminfo = true;
 
