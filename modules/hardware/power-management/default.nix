@@ -6,27 +6,10 @@
 
   config = lib.mkIf config.mymodules.power-management.enable {
 
-#     # RAPL power limit script
-#     systemd.services.rapl-battery = {
-#       description = "Set RAPL power limits on battery";
-#       wantedBy = [ "multi-user.target" ];
-#       after = [ "tlp.service" ];
-#       serviceConfig = {
-#         Type = "oneshot";
-#         RemainAfterExit = true;
-#         ExecStart = pkgs.writeShellScript "rapl-set" ''
-#           if [ "$(cat /sys/class/power_supply/ACAD/online)" = "0" ]; then
-#             echo 25000000 > /sys/devices/virtual/powercap/intel-rapl/intel-rapl:0/constraint_0_power_limit_uw
-#             echo 35000000 > /sys/devices/virtual/powercap/intel-rapl/intel-rapl:0/constraint_1_power_limit_uw
-#           fi
-#         '';
-#       };
-#     };
-
-    # Also trigger on AC unplug via udev
-    services.udev.extraRules = ''
-      SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{POWER_SUPPLY_NAME}=="ACAD", RUN+="${pkgs.systemd}/bin/systemctl restart rapl-battery.service"
-    '';
+#    # Also trigger on AC unplug via udev
+#    services.udev.extraRules = ''
+#      SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{POWER_SUPPLY_NAME}=="ACAD", RUN+="${pkgs.systemd}/bin/systemctl restart rapl-battery.service"
+#    '';
 
     boot.kernel.sysctl = {
       "vm.dirty_writeback_centisecs" = 1500;
@@ -46,7 +29,7 @@
         # Battery Saver TEST!!
         CPU_MAX_PERF_ON_BAT = 50;
         PLATFORM_PROFILE_ON_BAT = "balanced";
-        PLATFORM_PROFILE_ON_AC = "performance";
+        PLATFORM_PROFILE_ON_AC = "balanced";
         RUNTIME_PM_ON_BAT = "auto";
         RUNTIME_PM_ON_AC = "on";
         DISK_IOSCHEDULER_ON_BAT = "mq-deadline";
