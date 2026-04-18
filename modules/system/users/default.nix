@@ -6,7 +6,6 @@
 
   config = lib.mkIf config.mymodules.users.enable {
 
-    # Define a user account
     users.users.simon = {
       isNormalUser = true;
       description = "Simon Vuylsteke";
@@ -18,6 +17,28 @@
         "lpadmin"
         "docker"
         "libvirt"
+      ];
+      packages = with pkgs; [];
+    };
+
+    users.users.jelka = {
+      isNormalUser = true;
+      description = "Jelka Labeeuw";
+      extraGroups = [ 
+        "networkmanager" 
+        "video"
+        "lpadmin"
+      ];
+      packages = with pkgs; [];
+    };
+
+    users.users.serveruser = {
+      isNormalUser = true;
+      description = "Drizella";
+      extraGroups = [ 
+        "video"
+        "render"
+        "docker"
       ];
       packages = with pkgs; [];
     };
