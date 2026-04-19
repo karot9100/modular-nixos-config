@@ -1,4 +1,3 @@
-# hosts/server/default.nix
 { pkgs, ... }:
 
 {

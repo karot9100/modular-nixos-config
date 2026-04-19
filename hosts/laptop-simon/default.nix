@@ -1,4 +1,3 @@
-# hosts/laptop-simon/default.nix
 { pkgs, ... }:
 
 {

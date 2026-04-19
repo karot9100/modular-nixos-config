@@ -1,6 +1,3 @@
-# profiles/laptop.nix
-# Desktop + laptop hardware extras (power, sensors).
-# Machine-specific hardware (NVIDIA, Lenovo Legion) belongs in the host file.
 { ... }:
 
 {

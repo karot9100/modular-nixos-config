@@ -1,5 +1,3 @@
-# users/simon.nix
-# Simon's system account. Imported by every host.
 { ... }:
 
 {
@@ -15,9 +13,6 @@
       "docker"
       "libvirt"
     ];
-    # openssh.authorizedKeys.keys = [
-    #   "ssh-ed25519 AAAA... simon@laptop"
-    # ];
   };
 
   users.groups.video  = {};

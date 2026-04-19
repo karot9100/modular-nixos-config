@@ -1,6 +1,3 @@
-# profiles/common.nix
-# Baseline applied to every host. Pulled in via server/desktop/laptop profiles.
-# Don't import this directly in a host — use one of the role profiles.
 { ... }:
 
 {

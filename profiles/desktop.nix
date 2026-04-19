@@ -1,6 +1,3 @@
-# profiles/desktop.nix
-# For any machine with a screen: GUI apps, audio, printing, browsers.
-# Laptops import this and add power management on top.
 { ... }:
 
 {
