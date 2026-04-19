@@ -1,28 +1,22 @@
-{ config, pkgs, lib, ... }:
+# modules/system/dotfiles/default.nix
+{ config, lib, ... }:
 
+let
+  user = config.mymodules.mainUser;
+in
 {
-
   options.mymodules.dotfiles.enable = lib.mkEnableOption "dotfiles";
 
   config = lib.mkIf config.mymodules.dotfiles.enable {
 
     system.activationScripts.dotfiles = ''
-  mkdir -p /home/simon/.config
+      mkdir -p /home/${user}/.config
 
-  rm -rf /home/simon/.config/waybar
-  rm -rf /home/simon/.config/hypr
-  rm -rf /home/simon/.config/fuzzel
-  rm -rf /home/simon/.config/swayosd
-  rm -rf /home/simon/.config/alacritty
-
-  ln -sf /etc/nixos/dotfiles/waybar /home/simon/.config/waybar
-  ln -sf /etc/nixos/dotfiles/hypr /home/simon/.config/hypr
-  ln -sf /etc/nixos/dotfiles/fuzzel /home/simon/.config/fuzzel
-  ln -sf /etc/nixos/dotfiles/swayosd /home/simon/.config/swayosd
-  ln -sf /etc/nixos/dotfiles/alacritty /home/simon/.config/alacritty
-
-'';
+      for d in waybar hypr fuzzel swayosd alacritty; do
+        rm -rf /home/${user}/.config/$d
+        ln -sf /etc/nixos/dotfiles/$d /home/${user}/.config/$d
+      done
+    '';
 
   };
-
 }

@@ -1,51 +1,12 @@
-{ config, pkgs, lib, ... }:
+# modules/system/users/default.nix
+# Declares mymodules.mainUser so other modules can reference the primary
+# user without hardcoding a name. Actual user accounts live in ../../../users/.
+{ lib, ... }:
 
 {
-
-  options.mymodules.users.enable = lib.mkEnableOption "users";
-
-  config = lib.mkIf config.mymodules.users.enable {
-
-    users.users.simon = {
-      isNormalUser = true;
-      description = "Simon Vuylsteke";
-      extraGroups = [ 
-        "networkmanager" 
-        "wheel"
-        "video"
-        "render"
-        "lpadmin"
-        "docker"
-        "libvirt"
-      ];
-      packages = with pkgs; [];
-    };
-
-    users.users.jelka = {
-      isNormalUser = true;
-      description = "Jelka Labeeuw";
-      extraGroups = [ 
-        "networkmanager" 
-        "video"
-        "lpadmin"
-      ];
-      packages = with pkgs; [];
-    };
-
-    users.users.serveruser = {
-      isNormalUser = true;
-      description = "Drizella";
-      extraGroups = [ 
-        "video"
-        "render"
-        "docker"
-      ];
-      packages = with pkgs; [];
-    };
-
-    users.groups.video = {};
-    users.groups.render = {};
-
+  options.mymodules.mainUser = lib.mkOption {
+    type        = lib.types.str;
+    default     = "simon";
+    description = "Primary user. Read by modules that write to $HOME.";
   };
-
 }

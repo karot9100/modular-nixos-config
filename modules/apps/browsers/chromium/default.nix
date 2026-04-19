@@ -1,21 +1,20 @@
+# modules/apps/browsers/chromium/default.nix
 { config, pkgs, lib, ... }:
 
+let
+  user = config.mymodules.mainUser;
+in
 {
-
   options.mymodules.chromium.enable = lib.mkEnableOption "chromium";
 
   config = lib.mkIf config.mymodules.chromium.enable {
 
-    environment.systemPackages = with pkgs; [
-      chromium
-    ];
+    environment.systemPackages = with pkgs; [ chromium ];
 
     systemd.tmpfiles.rules = [
-      "d /home/simon/.config 0755 simon users - -"
-      "d /home/simon/.config/chromium 0755 simon users - -"
+      "d /home/${user}/.config 0755 ${user} users - -"
+      "d /home/${user}/.config/chromium 0755 ${user} users - -"
     ];
 
   };
-
 }
-

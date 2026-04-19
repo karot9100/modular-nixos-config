@@ -1,20 +1,19 @@
+# modules/apps/media/screenshot/default.nix
 { config, pkgs, lib, ... }:
 
+let
+  user = config.mymodules.mainUser;
+in
 {
-
   options.mymodules.screenshot.enable = lib.mkEnableOption "screenshot";
 
   config = lib.mkIf config.mymodules.screenshot.enable {
 
-    environment.systemPackages = with pkgs; [
-      grim
-      slurp
-    ];
+    environment.systemPackages = with pkgs; [ grim slurp ];
 
     systemd.user.tmpfiles.rules = [
-      "d /home/simon/Screenshots 0755 simon users -"
+      "d /home/${user}/Screenshots 0755 ${user} users -"
     ];
 
   };
-
 }

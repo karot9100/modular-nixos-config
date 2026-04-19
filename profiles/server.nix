@@ -1,25 +1,27 @@
-{ config, pkgs, lib, ... }:
+# profiles/server.nix
+# Headless server: SSH hardened, no GUI stack.
+# Static networking is configured per-host (not via NetworkManager).
+{ lib, ... }:
 
 {
+  imports = [ ./common.nix ];
 
-  imports = [
-    ../modules
-  ];
+  # Servers configure networking statically in the host file.
+  mymodules.networking.enable = lib.mkForce false;
 
-  # Dev
-  mymodules.docker.enable           = true;
+  # Core services for a server.
+  mymodules.docker.enable = true;
 
-  # Editors
-  mymodules.vim.enable              = true;
+  # SSH (hardened) — enabled for every host using this profile.
+  services.openssh = {
+    enable   = true;
+    settings = {
+      PermitRootLogin              = "no";
+      PasswordAuthentication       = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
 
-  # System
-  mymodules.base.enable             = true;
-  mymodules.bash.enable             = true;
-  mymodules.networking.enable       = true;
-  mymodules.users.enable            = true;
-
-
-
-
-
+  networking.firewall.enable          = true;
+  networking.firewall.allowedTCPPorts = [ 22 ];
 }
