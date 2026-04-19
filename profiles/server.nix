@@ -1,6 +1,3 @@
-# profiles/server.nix
-# Headless server: SSH hardened, no GUI stack.
-# Static networking is configured per-host (not via NetworkManager).
 { lib, ... }:
 
 {
