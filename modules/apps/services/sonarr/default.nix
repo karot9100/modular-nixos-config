@@ -6,9 +6,10 @@
 
   config = lib.mkIf config.mymodules.sonarr.enable {
 
-    environment.systemPackages = with pkgs; [
-      sonarr
-    ];
+    services.sonarr = {
+      enable = true;
+      openFirewall = true;
+    };
 
   };
 

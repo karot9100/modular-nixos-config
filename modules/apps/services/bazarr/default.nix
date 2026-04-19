@@ -6,9 +6,10 @@
 
   config = lib.mkIf config.mymodules.bazarr.enable {
 
-    environment.systemPackages = with pkgs; [
-      bazarr
-    ];
+    services.bazarr = {
+      enable = true;
+      openFirewall = true;
+    };
 
   };
 

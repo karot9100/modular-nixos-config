@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
 
+let
+  user = config.mymodules.mainUser;
+in
+
 {
 
   options.mymodules.base.enable = lib.mkEnableOption "base";
@@ -18,9 +22,6 @@
       wget
       killall 
     ];
-
-    # Enable Appimage support
-    programs.appimage.enable = true;
 
     # Experimental Features
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -42,6 +43,11 @@
     
     # Configure console keymap
     console.keyMap = "be-latin1";
+
+    # Create config folder with proper permissions 
+    systemd.tmpfiles.rules = [
+      "d /home/${user}/.config 0755 ${user} users - -"
+    ];
 
   };
 

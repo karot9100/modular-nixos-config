@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/laptop.nix
+    ../../profiles/LOQ.nix
     ../../users/simon.nix
   ];
 

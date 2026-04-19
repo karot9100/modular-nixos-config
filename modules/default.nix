@@ -49,6 +49,7 @@
     ./apps/services/prowlarr
     ./apps/services/radarr
     ./apps/services/sonarr
+    ./apps/services/jellyfin
 
     # Apps - terminals
     ./apps/terminals/alacritty

@@ -1,13 +1,11 @@
 { lib, ... }:
 
 {
+
   imports = [ ./common.nix ];
 
   # Servers configure networking statically in the host file.
   mymodules.networking.enable = lib.mkForce false;
-
-  # Core services for a server.
-  mymodules.docker.enable = true;
 
   # SSH (hardened) — enabled for every host using this profile.
   services.openssh = {
@@ -21,4 +19,13 @@
 
   networking.firewall.enable          = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
+
+  # Services
+  mymodules.docker.enable             = true;
+  mymodules.radarr.enable             = true;
+  mymodules.sonarr.enable             = true;
+  mymodules.prowlarr.enable           = true;
+  mymodules.bazarr.enable             = true;
+  mymodules.jellyfin.enable           = true;
+
 }

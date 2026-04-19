@@ -6,9 +6,10 @@
 
   config = lib.mkIf config.mymodules.radarr.enable {
 
-    environment.systemPackages = with pkgs; [
-      radarr
-    ];
+    services.radarr = {
+      enable = true;
+      openFirewall = true;
+    };
 
   };
 

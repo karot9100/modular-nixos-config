@@ -12,7 +12,6 @@ in
     environment.systemPackages = with pkgs; [ chromium ];
 
     systemd.tmpfiles.rules = [
-      "d /home/${user}/.config 0755 ${user} users - -"
       "d /home/${user}/.config/chromium 0755 ${user} users - -"
     ];
 

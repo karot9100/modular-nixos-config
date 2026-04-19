@@ -6,9 +6,10 @@
 
   config = lib.mkIf config.mymodules.prowlarr.enable {
 
-    environment.systemPackages = with pkgs; [
-      prowlarr
-    ];
+    services.prowlarr = {
+      enable = true;
+      openFirewall = true;
+    };
 
   };
 
